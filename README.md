@@ -12,6 +12,10 @@ back a few years and check to see if there is a trend during different times of 
 
 -No longer will you have to leave the country with uncertainty!
 
+-Get updated information on crime activity to places that you are interested in
+
+-See the visualized data on crime aactivity of present and past
+
 -Use this app to plan your trip accordingly
 
 -The tools I will be using are Pyhton, Pandas, Jupyter Notebook, Jdango/Flask, JHipster, MySQL, HTML, CSS3
