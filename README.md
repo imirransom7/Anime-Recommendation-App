@@ -1,21 +1,21 @@
-# Travel Locations Saftery Meter
+# Anime Recommendation App
 
 ## One Pager
-There is crime everywhere we go, no matter what. The point of this application is not to scare you,
-but to keep you aware and alert on.
-This application will help determine wether a certain location of your choosing is safe option or not.
-This will and can be used by many. Whether it is for a businesss trip or a family vaction, this app is right for you. Its other purpose
-is to help people travel saftely, especially those whom may have not traveled before.
-The data that is collected and being analyzed to help support my findings on whether a country is safe will be determined off of criminal activiy/crimes reported in specified counrties. The user
-will be able to cylce through the data presented for each country to see to see if it is safe to travel there. They can see crime rates for the current month, and year. They can even go
-back a few years and check to see if there is a trend during different times of the year at specific months.
 
--No longer will you have to leave the country with uncertainty!
+This application will be used to recommend anime to not just traditional and new anime watchers, but to those who have yet to get into it. The app will select
+anime you should watch depending on anime you may have watched previously, as well as anime you plan on watching.
+If you haven't wathced any anime, you can select genres you are interested in and a recommendation will be made on that. It can aslo make a recommendation
+movies and shows you have watched or liked that are not anime based on that movie or shows genre. You will be able to add anime to your favorites
+and anything in your favorites, other anime will be recommended to you based on those anime's genre
 
--Get updated information on crime activity to places that you are interested in
+-Will show the viusal analystical data for most popular anime
 
--See the visualized data on crime aactivity of present and past
+-Will have visual analytics on the top rated anime
 
--Use this app to plan your trip accordingly
+-Favorites list
 
--The tools I will be using are Pyhton, Pandas, Jupyter Notebook, Jdango/Flask, JHipster, MySQL, HTML, CSS3
+-Save later list
+
+-User profile to save your favorites and save later options
+
+-The tools I will use are Python, Pandas, JHipster, HTML, CSS, and MySQL
