@@ -23,13 +23,13 @@ and anything in your favorites, other anime will be recommended to you based on 
 
 ## Datasets
 
-The dataset I will be using to help with my analysis is from kaggle, _Anime Dataset 2023_.
+The dataset I will be using to help with my analysis is from kaggle, **Anime Dataset 2023**.
 I will use the csv files `anime-dataset-2023.csv` and `user-details-2023.csv` to look
 at analytical data for anime trends and see who is mainly interested in what
 
 ### Content
 
-*anime-dataset-2023.csv*
+**anime-dataset-2023.csv**
 
 - `anime_id`: Unique ID for each anime.
 - `Name`: The name of the anime in its original language.
@@ -57,7 +57,7 @@ at analytical data for anime trends and see who is mainly interested in what
 - `Image URL`: The URL of the anime's image or poster.
 
 
-*users-details-2023.csv*
+**users-details-2023.csv**
 
 - `Mal ID`: Unique ID for each user.
 - `Username`: The username of the user.
