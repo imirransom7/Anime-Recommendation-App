@@ -23,7 +23,7 @@ and anything in your favorites, other anime will be recommended to you based on 
 
 ## Datasets
 
-The dataset I will be using to help with my analysis is from kaggle, *Anime Dataset 2023*.
+The dataset I will be using to help with my analysis is from kaggle, _Anime Dataset 2023_.
 I will use the csv files `anime-dataset-2023.csv` and `user-details-2023.csv` to look
 at analytical data for anime trends and see who is mainly interested in what
 
