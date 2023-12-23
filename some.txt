@@ -4,11 +4,11 @@ from flask_sqlalchemy import SQLAlchemy
 
 # Creating an instance of a Flask web app
 app = Flask(__name__)
-# All session data is encrytped on the server, secret key is needed to
-# decrypt and encrpyt the data
+# All session data is encrypted on the server, secret key is needed to
+# decrypt and encrypt the data
 app.secret_key = 'hello'
 # initiating an object database
-app.config['SQLALCHEMY_DATABASE-URI'] = 'sqlite://users.sqlite3'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
 # Turns off all tracking modifications to the database
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # adds max time for session to last
@@ -49,7 +49,19 @@ def login():
         # then set it equal to a value
         session['user'] = user
         flash('Login Successful!')
-        return redirect(url_for('user'))
+        # return redirect(url_for('user'))
+        # users from the db model, making a query, find all users in table with name of specific user
+        # only want one entry since we know there will only be one user with one name
+        found_user = users.query.filter_by(name=user).first()
+        if found_user:
+            # grab the users email and store it in a session
+            session['email'] = found_user.email
+
+        else:
+            usr = users(user, '', '', '')
+            db.session.add(usr)
+            # committing the changes, otherwise it will not be saved to the database
+            db.session.commit()
     else:
         # redirect user to user if logged in
         if "user" in session:
@@ -71,6 +83,11 @@ def user():
             email = request.form['email']
             # storing the email in a session
             session['email'] = email
+            found_user = users.query.filter_by(name=user).first()
+            # change the user's email
+            found_user.email = email
+            # saves the email
+            db.session.commit()
             flash("Email was saved!")
         else:
             # if the request.method is a get request
