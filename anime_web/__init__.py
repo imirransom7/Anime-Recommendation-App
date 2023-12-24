@@ -1,8 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from os import path
+from flask_login import LoginManager
 
-db = SQLAlchemy
+db = SQLAlchemy()
 DB_NAME = 'database.db'
+
 
 # How to initialize Flask
 def create_app():
@@ -12,7 +15,7 @@ def create_app():
     # Storing the database inside the anime_web folder
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     #  taking the database and telling it this the app we are going to use
-
+    db.init_app(app)
 
     # importing the blueprints
     from .views import views
@@ -22,4 +25,16 @@ def create_app():
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
 
+    # to load file to run it before it initializes or create the databases
+    from .model import User, Anime
+
+    # with app.app_context():
+    #     db.create_all()
+
     return app
+
+
+def create_database(app):
+    if not path.exists('anime_web/' + DB_NAME):
+        db.create_all(app=app)
+        print('Created Database~')
