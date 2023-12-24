@@ -27,7 +27,7 @@ def sin_up():
         password2 = request.form.get('password2')
 
         if len(email) < 4:
-            flash("Your email is to short, needs to be at least 4 characters", category="error")
+            flash("Your email is too short, needs to be at least 4 characters", category="error")
         elif len(first_name) < 3:
             flash("First name must be longer than 2 characters", category='error')
         elif password1 != password2:

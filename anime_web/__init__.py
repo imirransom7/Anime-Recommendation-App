@@ -1,11 +1,17 @@
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
+db = SQLAlchemy
+DB_NAME = 'database.db'
 
 # How to initialize Flask
 def create_app():
     app = Flask(__name__)
     # Secure the cookies session data; the secret key for the app
     app.config["SECRET_KEY"] = 'THIS IS THE SECRET KEY'
+    # Storing the database inside the anime_web folder
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    #  taking the database and telling it this the app we are going to use
 
 
     # importing the blueprints
