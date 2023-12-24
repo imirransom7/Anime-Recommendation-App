@@ -1,5 +1,6 @@
 from anime_web import create_app
 
+
 app = create_app()
 
 # only if this file is run, then this line is executed
