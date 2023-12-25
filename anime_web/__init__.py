@@ -20,16 +20,13 @@ def create_app():
     # importing the blueprints
     from .views import views
     from .auth import auth
-
+    from .commands import db_commands
     # registering the blueprints; accessing all urls with a /
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
-
-    # to load file to run it before it initializes or create the databases
-    from .models import User, AnimeFiltered
-
-    from .commands import db_commands
     app.register_blueprint(db_commands)
+    # to load file to run it before it initializes or create the databases
+    from .models import User, AnimeData
 
     with app.app_context():
         db.create_all()

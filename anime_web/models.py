@@ -2,6 +2,47 @@ from . import db
 from flask_login import UserMixin
 
 
+class AnimeData(db.Model):
+    anime_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+    score = db.Column(db.Text)
+    genres = db.Column(db.Text)
+    synopsis = db.Column(db.Text)
+    type = db.Column(db.Text)
+    episodes = db.Column(db.Integer)
+    aired = db.Column(db.Text)
+    studios = db.Column(db.String(50))
+    duration = db.Column(db.Text)
+    rating = db.Column(db.Text)
+    rank = db.Column(db.Integer)
+    image_url = db.Column(db.Text)
+    favorites = db.Column(db.Integer)
+
+
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(150), unique=True)
+    password = db.Column(db.String(150))
+    first_name = db.Column(db.String(150))
+
+
+# class AnimeFiltered(db.Model):
+#     anime_id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(50))
+#     score = db.Column(db.Text)
+#     genres = db.Column(db.Text)
+#     synopsis = db.Column(db.Text)
+#     type = db.Column(db.Text)
+#     episodes = db.Column(db.Integer)
+#     aired = db.Column(db.Text)
+#     studios = db.Column(db.String(50))
+#     duration = db.Column(db.Text)
+#     rating = db.Column(db.Text)
+#     rank = db.Column(db.Integer)
+#     image_url = db.Column(db.Text)
+#     favorites = db.Column(db.Integer)
+
+
 # class AnimeDataset(db.Model):
 #     anime_id = db.Column(db.Integer, primary_key=True, unique=True)
 #     name = db.Column(db.String(50))
@@ -28,28 +69,3 @@ from flask_login import UserMixin
 #     completed = db.Column(db.Integer)
 #     on_hold = db.Column(db.Integer)
 #     dropped = db.Column(db.Integer)
-
-
-class AnimeFiltered(db.Model):
-    anime_id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
-    score = db.Column(db.Text)
-    genres = db.Column(db.Text)
-    synopsis = db.Column(db.Text)
-    type = db.Column(db.Text)
-    episodes = db.Column(db.Integer)
-    aired = db.Column(db.Text)
-    studios = db.Column(db.String(50))
-    duration = db.Column(db.Text)
-    rating = db.Column(db.Text)
-    rank = db.Column(db.Integer)
-    image_url = db.Column(db.Text)
-    favorites = db.Column(db.Integer)
-
-
-class User(db.Model, UserMixin):
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(150), unique=True)
-    password = db.Column(db.String(150))
-    first_name = db.Column(db.String(150))
-

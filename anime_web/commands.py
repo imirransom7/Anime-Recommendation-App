@@ -1,7 +1,7 @@
 # commands.py
-from flask import Blueprint
+from flask import Blueprint, render_template
 from flask.cli import with_appcontext
-from .models import db, AnimeFiltered
+from .models import db, AnimeData
 import pandas as pd
 
 
@@ -22,30 +22,41 @@ def import_data():
     # Add your data import logic here
     df = pd.read_csv('anime-dataset-2023.csv')
 
-    grouped = df.groupby(['anime_id', 'Name', 'Score',
-                          'Genres', 'Synopsis', 'Type',
-                          'Episodes', 'Aired', 'Studios',
-                          'Rating', 'Rank', 'Image URL']).Favorites.size()
+    group = df.groupby(['anime_id', 'Name', 'Score',
+                        'Genres', 'Synopsis', 'Type',
+                        'Episodes', 'Aired', 'Studios',
+                        'Duration', 'Rating', 'Rank',
+                        'Image URL']).Favorites.size().reset_index()
 
-    with db.session.begin(subtransactions=True):
-        for name, group in grouped:
-            anime_instance = AnimeFiltered(
-                anime_id=name[0],
-                name=name[1],
-                score=name[2],
-                genres=name[3],
-                synopsis=name[4],
-                type=name[5],
-                episodes=name[6],
-                aired=name[7],
-                studios=name[8],
-                duration=name[9],
-                rating=name[10],
-                rank=name[11],
-                image_url=name[12],
-                favorites=group['Favorites'].size,
+    grouped = pd.DataFrame(group)
+    with db.session.begin():
+        for index, row in grouped.iterrows():
+            anime_instance = AnimeData(
+                anime_id=row['anime_id'],
+                name=row['Name'],
+                score=row['Score'],
+                genres=row['Genres'],
+                synopsis=row['Synopsis'],
+                type=row['Type'],
+                episodes=row['Episodes'],
+                aired=row['Aired'],
+                studios=row['Studios'],
+                duration=row['Duration'],  # Assuming Duration is a column in your CSV
+                rating=row['Rating'],
+                rank=row['Rank'],
+                image_url=row['Image URL'],
+                favorites=row['Favorites'],
             )
             db.session.add(anime_instance)
 
     # Commit the changes to the database
     db.session.commit()
+
+
+@db_commands.route('/anime')
+def show_data():
+    # Query all records from AnimeData
+    anime_data = AnimeData.query.all()
+
+    # Render a template or print the data
+    return render_template('anime.html', anime_data=anime_data)
