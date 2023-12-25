@@ -69,3 +69,8 @@ def sign_up():
             return redirect(url_for('views.home'))
 
     return render_template("sign_up.html", user=current_user)
+
+
+@auth.route('/anime-list')
+def anime_list():
+    return render_template('anime_list.html')
