@@ -1,8 +1,7 @@
 from flask import Blueprint
 from flask import render_template
 from . import db
-from anime_web.models import AnimeDataset
-import csv
+
 
 # defining this file as the blueprint of the application
 # defined the blueprint

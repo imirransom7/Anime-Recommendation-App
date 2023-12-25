@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from .models import User
+from .models import User, AnimeFiltered
 from werkzeug.security import generate_password_hash, check_password_hash
-from . import db   ##means from __init__.py import db
+from . import db   # means from __init__.py import db
 from flask_login import login_user, login_required, logout_user, current_user
 
 
@@ -72,5 +72,9 @@ def sign_up():
 
 
 @auth.route('/anime-list')
-def anime_list():
-    return render_template('anime_list.html')
+def show_data():
+    # Query all records from AnimeDataset
+    anime_data = AnimeFiltered.query.all()
+
+    # Render a template or print the data
+    return render_template('anime-list.html', anime_data=anime_data)

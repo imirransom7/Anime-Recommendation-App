@@ -17,7 +17,6 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     #  taking the database and telling it this the app we are going to use
     db.init_app(app)
-    from .csv_importer import import_csv_to_anime_dataset
     # importing the blueprints
     from .views import views
     from .auth import auth
@@ -27,13 +26,13 @@ def create_app():
     app.register_blueprint(auth, url_prefix='/')
 
     # to load file to run it before it initializes or create the databases
-    from .models import User
+    from .models import User, AnimeFiltered
+
+    from .commands import db_commands
+    app.register_blueprint(db_commands)
 
     with app.app_context():
         db.create_all()
-        # Import data from CSV to AnimeDataset
-        csv_file_path = 'anime-filtered.csv'  # Update with your CSV file path
-        import_csv_to_anime_dataset(csv_file_path)
 
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
