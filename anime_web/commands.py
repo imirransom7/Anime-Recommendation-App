@@ -1,4 +1,3 @@
-# commands.py
 from flask import Blueprint, render_template
 from flask.cli import with_appcontext
 from .models import db, AnimeData
@@ -6,6 +5,18 @@ import pandas as pd
 
 
 db_commands = Blueprint("db_commands", __name__)
+
+
+df1 = pd.read_csv('anime-dataset-2023.csv')
+
+# Made a list for anime names and the url image links
+anime_name = list(df1['Name'])
+image_list = list(df1['Image URL'])
+# combine both the list so the names iterates next to the images
+anime_list = zip(anime_name, image_list)
+
+anime_dict = dict(df1)
+name_list = list(anime_dict['Name'])
 
 
 @db_commands.cli.command("init-db")
@@ -27,7 +38,7 @@ def import_data():
                         'Episodes', 'Aired', 'Studios',
                         'Duration', 'Rating', 'Rank',
                         'Image URL']).Favorites.size().reset_index()
-
+    print(f"Number of rows before import: {len(df)}")
     grouped = pd.DataFrame(group)
     with db.session.begin():
         for index, row in grouped.iterrows():
@@ -51,12 +62,23 @@ def import_data():
 
     # Commit the changes to the database
     db.session.commit()
+    print(f"Number of rows after import: {AnimeData.query.count()}")
+
+
+with open('static/image_urls.txt', 'r') as file:
+    image_urls = file.read().splitlines()
+
+anime_images = [
+    {
+        'Name': f"Anime {index + 1}",
+        'image_url': url,
+    }
+    for index, url in enumerate(image_urls)
+]
 
 
 @db_commands.route('/anime')
-def show_data():
-    # Query all records from AnimeData
+def anime():
     anime_data = AnimeData.query.all()
-
-    # Render a template or print the data
-    return render_template('anime.html', anime_data=anime_data)
+    # Check in the Flask console
+    return render_template('anime.html', anime_images=anime_images) # # anime_dict=anime_dict, name_list=name_list

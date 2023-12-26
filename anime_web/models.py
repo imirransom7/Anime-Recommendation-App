@@ -3,7 +3,7 @@ from flask_login import UserMixin
 
 
 class AnimeData(db.Model):
-    anime_id = db.Column(db.Integer, primary_key=True)
+    anime_id = db.Column(db.Integer, primary_key=True, unique=True)
     name = db.Column(db.String(50))
     score = db.Column(db.Text)
     genres = db.Column(db.Text)
