@@ -6,12 +6,13 @@ import pandas as pd
 
 db_commands = Blueprint("db_commands", __name__)
 
-
+# getting the more current anime since there is a lot of outdated anime
 df1 = pd.read_csv('anime-dataset-2023.csv')
+member_sort = df1.sort_values(by=['Members'], ascending=False).head(6000)
 
 # Made a list for anime names and the url image links
-anime_name = list(df1['Name'])
-image_list = list(df1['Image URL'])
+anime_name = list(member_sort['Name'])
+image_list = list(member_sort['Image URL'])
 # combine both the list so the names iterates next to the images
 anime_list = zip(anime_name, image_list)
 
@@ -66,7 +67,7 @@ def import_data():
 
 
 # opening text file with urls to iterate over them
-with open('anime_web/static/image_urls.txt', 'r') as file:
+with open('anime_web/static/member_url_sort.txt', 'r') as file:
     image_urls = file.readlines()
 
 anime_images = [
@@ -74,15 +75,16 @@ anime_images = [
         'Name': index,
         'image_url': url,
     }
-    for url in image_urls
-    for index in name_list
+    for index, url in enumerate(image_urls)
 ]
 
 anime_img_list = zip(name_list, anime_images)
+new_line = '\n'
 
 
 @db_commands.route('/anime')
 def anime():
     anime_data = AnimeData.query.all()
     # Check in the Flask console
-    return render_template('anime.html', anime_img_list=anime_img_list, anime_images=anime_images, name_list=name_list) # # anime_dict=anime_dict,
+    return render_template('anime.html', anime_img_list=anime_img_list, anime_images=anime_images,
+                           name_list=name_list, new_line=new_line)  # anime_dict=anime_dict,

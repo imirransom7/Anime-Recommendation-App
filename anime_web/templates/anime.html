@@ -5,12 +5,12 @@
 {% block header %}Anime List{% endblock %}
 
 {% block content %}
-    <h2>Anime List</h2>
+    <h1>Anime List</h1>
     <ul>
         {% for data in anime_images %}
+        {{new_line}}
             <li>
                 <img src="{{ data['image_url'] }}" alt="{{ data['Name'] }}" width="300" height="350">
-                <p>{{ data['Name'] }}</p>
             </li>
         {% endfor %}
     </ul>
