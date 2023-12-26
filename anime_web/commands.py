@@ -65,20 +65,24 @@ def import_data():
     print(f"Number of rows after import: {AnimeData.query.count()}")
 
 
-with open('static/image_urls.txt', 'r') as file:
-    image_urls = file.read().splitlines()
+# opening text file with urls to iterate over them
+with open('anime_web/static/image_urls.txt', 'r') as file:
+    image_urls = file.readlines()
 
 anime_images = [
     {
-        'Name': f"Anime {index + 1}",
+        'Name': index,
         'image_url': url,
     }
-    for index, url in enumerate(image_urls)
+    for url in image_urls
+    for index in name_list
 ]
+
+anime_img_list = zip(name_list, anime_images)
 
 
 @db_commands.route('/anime')
 def anime():
     anime_data = AnimeData.query.all()
     # Check in the Flask console
-    return render_template('anime.html', anime_images=anime_images) # # anime_dict=anime_dict, name_list=name_list
+    return render_template('anime.html', anime_img_list=anime_img_list, anime_images=anime_images, name_list=name_list) # # anime_dict=anime_dict,
