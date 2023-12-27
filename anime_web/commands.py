@@ -69,7 +69,7 @@ def import_data():
 # opening text file with urls to iterate over them
 with open('anime_web/static/member_url_sort.txt', 'r') as file:
     image_urls = file.readlines()
-
+anime_pics = image_urls
 anime_images = [
     {
         'Name': index,
@@ -79,7 +79,7 @@ anime_images = [
 ]
 
 anime_img_list = zip(name_list, anime_images)
-new_line = '\n'
+ranger = range(len(anime_images))
 
 
 @db_commands.route('/anime')
@@ -87,4 +87,4 @@ def anime():
     anime_data = AnimeData.query.all()
     # Check in the Flask console
     return render_template('anime.html', anime_img_list=anime_img_list, anime_images=anime_images,
-                           name_list=name_list, new_line=new_line)  # anime_dict=anime_dict,
+                           anime_name=anime_name, ranger=ranger, anime_pics=anime_pics)  # anime_dict=anime_dict,

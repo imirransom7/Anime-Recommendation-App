@@ -7,10 +7,10 @@
 {% block content %}
     <h1>Anime List</h1>
     <ul>
-        {% for data in anime_images %}
-        {{new_line}}
+        {% for data in ranger %}
             <li>
-                <img src="{{ data['image_url'] }}" alt="{{ data['Name'] }}" width="300" height="350">
+                <h3>{{anime_name[data]}}</h3>
+                <img src="{{ anime_pics[data] }}" alt="{{ anime_images['Name'] }}" width="300" height="350">
             </li>
         {% endfor %}
     </ul>
