@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Anime Details - My Anime App{% endblock %}
+
+{% block header %}Anime Details{% endblock %}
+
+{% block content %}
+    <h1>{{ name_anime }}</h1>
+    <img src="{{ pics_anime }}" alt="{{ name_anime }}" width="300" height="350">
+    <h3>Synopsis:</h3>
+    {{ summary }}
+    <h3>Genre(s):</h3>
+    <ul>
+    {% for g in genre %}
+    <li>
+        {{ g }}
+    </li>
+    {% endfor %}
+    </ul>
+{% endblock %}
