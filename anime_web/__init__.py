@@ -20,11 +20,13 @@ def create_app():
     # importing the blueprints
     from .views import views
     from .auth import auth
-    from .commands import db_commands
+    # from .commands import db_commands
+    from .anime import anime_bp
     # registering the blueprints; accessing all urls with a /
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
-    app.register_blueprint(db_commands)
+    # app.register_blueprint(db_commands)
+    app.register_blueprint(anime_bp)
     # to load file to run it before it initializes or create the databases
     from .models import User, AnimeData
 
@@ -36,8 +38,8 @@ def create_app():
     login_manager.init_app(app)
 
     @login_manager.user_loader
-    def load_user(id):
-        return User.query.get(int(id))
+    def load_user(_id):
+        return User.query.get(int(_id))
 
     return app
 

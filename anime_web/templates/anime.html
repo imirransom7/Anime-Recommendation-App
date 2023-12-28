@@ -9,7 +9,7 @@
     <ul>
         {% for data in ranger %}
             <li>
-                <a href="{{ url_for('db_commands.anime_details', anime_index=data) }}">
+                <a href="{{ url_for('anime.anime_details', anime_index=data) }}">
                     <h3>{{anime_name[data]}}</h3>
                     <img src="{{ anime_pics[data] }}" alt="{{ anime_name[data] }}" width="300" height="350"></a>
             </li>
