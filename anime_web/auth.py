@@ -70,11 +70,3 @@ def sign_up():
 
     return render_template("sign_up.html", user=current_user)
 
-
-# @auth.route('/anime-list')
-# def show_data():
-#     # Query all records from AnimeDataset
-#     anime_data = AnimeFiltered.query.all()
-#
-#     # Render a template or print the data
-#     return render_template('anime-list.html', anime_data=anime_data)

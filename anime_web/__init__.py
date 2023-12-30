@@ -15,6 +15,7 @@ def create_app():
     app.config["SECRET_KEY"] = 'THIS IS THE SECRET KEY'
     # Storing the database inside the anime_web folder
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     #  taking the database and telling it this the app we are going to use
     db.init_app(app)
     # importing the blueprints
