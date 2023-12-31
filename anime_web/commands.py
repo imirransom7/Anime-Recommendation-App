@@ -18,7 +18,7 @@ def init_db():
 def import_data():
     # Load data into the AnimeDataset table
     # Add your data import logic here
-    df = pd.read_csv('anime-dataset-2023.csv')
+    df = pd.read_csv('anime_web/anime-dataset-2023.csv')
 
     group = df.groupby(['anime_id', 'Name', 'Score',
                         'Genres', 'Synopsis', 'Type',
@@ -52,8 +52,9 @@ def import_data():
     print(f"Number of rows after import: {AnimeData.query.count()}")
 
 
-@db_commands.route('/anime')
-def anime():
-    anime_data = AnimeData.query.all()
+# @db_commands.route('/anime-command')
+# def anime():
+#     anime_data = AnimeData.query.all()
+#     render_template('anime_command.html', anime_data=anime_data)
 
 

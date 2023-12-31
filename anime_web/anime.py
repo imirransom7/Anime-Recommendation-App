@@ -9,10 +9,9 @@ df1 = pd.read_csv('anime-dataset-2023.csv')
 df_dict = dict(df1)
 
 member_sort = df1.sort_values(by=['Members'], ascending=False).head(6000)
-score_sort = df1.sort_values(by=['Score'], ascending=False).head(6000)
 
 new_dict = dict(member_sort)
-# list for the respective columns
+# list for the respective columns from member_sort
 anime_name = list(member_sort['Name'])
 image_list = list(member_sort['Image URL'])
 anime_id = list(member_sort['anime_id'])
@@ -26,6 +25,12 @@ anime_aired = list(member_sort['Aired'])
 anime_duration = list(member_sort['Duration'])
 anime_studio = list(member_sort['Studios'])
 
+score_sort = df1.sort_values(by=['Score'], ascending=False)
+score_sort = score_sort.drop(score_sort[score_sort['Score'].str.contains('UNKNOWN')].index)
+score_sort = score_sort.head(6000)
+# list for respective columns for the highest rated order
+score_name = list(score_sort['Name'])
+score_id = list(score_sort['anime_id'])
 
 # opening text file with urls to iterate over them
 with open('anime_web/static/member_url_sort.txt', 'r') as file:
@@ -33,7 +38,7 @@ with open('anime_web/static/member_url_sort.txt', 'r') as file:
 anime_pics = image_urls
 
 # same as above, but in order from the highest rated
-with open('score_url_sort.txt', 'r')as file:
+with open('anime_web/static/score_img_sort.txt', 'r')as file:
     score_img_url = file.readlines()
 
 # a range used to help get a list of both the names and the images of the anime
@@ -49,7 +54,7 @@ genre_anime = [gen.split(',') for gen in anime_genre]
 @anime_bp.route('/anime')
 def anime():
     # Check in the Flask console
-    return render_template('anime.html', ranger=ranger, anime_name=anime_name,
+    return render_template('anime.html', range=ranger, anime_name=anime_name,
                            anime_pics=anime_pics, anime_id=anime_id)
 
 
@@ -70,7 +75,7 @@ def anime_details(anime_index):
     # Redner the details page with the fetched data
     return render_template('anime_details.html', name_anime=name_anime,
                            pics_anime=pics_anime, anime_index=anime_index, new_dict=new_dict,
-                           summary=summary, genre=genre, ranger=ranger,
+                           summary=summary, genre=genre, range=ranger,
                            score=score, rating=rating, type_anime=type_anime,
                            episodes=episodes, aired=aired, duration=duration,
                            studio=studio)
@@ -78,4 +83,6 @@ def anime_details(anime_index):
 
 @anime_bp.route('/anime/highest-rated')
 def highest_score():
-    return render_template()
+
+    return render_template('highest_rated.html', range=ranger, score_name=score_name,
+                           anime_pics=score_img_url, anime_id=anime_id)

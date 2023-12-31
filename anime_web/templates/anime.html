@@ -7,7 +7,7 @@
 {% block content %}
     <h1>Anime List</h1>
     <ul>
-        {% for data in ranger %}
+        {% for data in range %}
             <li>
                 <a href="{{ url_for('anime.anime_details', anime_index=data) }}">
                     <h3>{{anime_name[data]}}</h3>

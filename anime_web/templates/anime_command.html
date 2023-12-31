@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block title %}Anime Page{% endblock %}
+{% block content %}
+  {% for data in anime_data %}
+     <li>{{ data.name }} - {{ data.score }}</li>
+  {% endfor %}
+{% endblock %}

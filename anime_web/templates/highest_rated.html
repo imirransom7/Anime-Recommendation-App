@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Anime List - My Anime App{% endblock %}
+
+{% block header %}Anime List{% endblock %}
+
+{% block content %}
+    <h1>Anime List</h1>
+    <ul>
+        {% for data in range %}
+            <li>
+                <a href="{{ url_for('anime.anime_details', anime_index=data) }}">
+                    <h3>{{score_name[data]}}</h3>
+                    <img src="{{ anime_pics[data] }}" alt="{{ score_name[data] }}" width="300" height="350"></a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
