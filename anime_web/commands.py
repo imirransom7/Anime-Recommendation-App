@@ -2,6 +2,7 @@ from flask import Blueprint, render_template
 from flask.cli import with_appcontext
 from .models import db, AnimeData
 import pandas as pd
+from sqlalchemy import desc, not_
 
 db_commands = Blueprint("db_commands", __name__)
 
@@ -52,9 +53,23 @@ def import_data():
     print(f"Number of rows after import: {AnimeData.query.count()}")
 
 
-# @db_commands.route('/anime-command')
-# def anime():
-#     anime_data = AnimeData.query.all()
-#     render_template('anime_command.html', anime_data=anime_data)
+@db_commands.route('/anime-command')
+def anime():
+    anime_data = AnimeData.query.all()
+    return render_template('anime_command.html', anime_data=anime_data)
+
+
+with open('anime_web/static/score_img_sort.txt', 'r')as file:
+    score_img_url = file.readlines()
+
+ranger = range(len(score_img_url))
+
+
+@db_commands.route('/anime-highest-rated')
+def anime_rated():
+    #  Query the AnimeData table, filter out rows with "UNKNOWN" values, and sort by score in descending order
+    rated_anime = AnimeData.query.filter(not_(AnimeData.score == 'UNKNOWN')).order_by(desc(AnimeData.score)).all()
+    return render_template('rated_anime.html', rated_anime=rated_anime,
+                           images=score_img_url, range=ranger)
 
 
