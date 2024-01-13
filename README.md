@@ -8,9 +8,9 @@ If you haven't wathced any anime, you can select genres you are interested in an
 movies and shows you have watched or liked that are not anime based on that movie or shows genre. You will be able to add anime to your favorites
 and anything in your favorites, other anime will be recommended to you based on those anime's genre.
 
--Recommendarion on wether you wamt to watch movies, short anime, and or longer anime
+-Recommendation on wether you wamt to watch movies, short anime, and or longer anime
 
--Will show the viusal analystical data for most popular anime
+-Will show the viusal analytical data for most popular anime
 
 -Will have visual analytics on the top rated anime
 
