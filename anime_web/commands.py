@@ -64,6 +64,16 @@ with open('anime_web/static/score_img_sort.txt', 'r')as file:
 
 ranger = range(len(score_img_url))
 
+with open('anime_web/static/image_urls.txt') as file:
+    all_images = file.readlines()
+
+
+@db_commands.route('/anime-home')
+def anime_home():
+    anime_list = AnimeData.query.all()
+    return render_template("anime_home.html", anime_list=anime_list,
+                           images=all_images, range=ranger)
+
 
 @db_commands.route('/anime-highest-rated')
 def anime_rated():
@@ -73,3 +83,13 @@ def anime_rated():
                            images=score_img_url, range=ranger)
 
 
+@db_commands.route('/anime-home/<int:anime_id>')
+def anime_info(anime_id):
+    anime_data = AnimeData.query.get(anime_id)
+
+    return render_template('anime_info.html', anime_data=anime_data)
+
+
+@db_commands.route('/anime-most-popular')
+def most_popular():
+    return render_template('most_popular.html')

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Anime Page{% endblock %}
+{% block content %}
+  {% for data in range %}
+    <ul>
+         <li>
+             <h3> {{ anime_list[data].name }}</h3>
+             <img align="center" src="{{ images[data] }}" alt="{{ anime_list[data].name }}" width="300" height="350">
+         </li>
+    </ul>
+  {% endfor %}
+{% endblock %}

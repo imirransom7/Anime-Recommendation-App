@@ -117,3 +117,20 @@ if __name__ == '__main__':
     db.create_all()
     app.run(debug=True)
 
+
+
+# anime_home.html
+{% extends 'base.html' %}
+{% block title %}Anime Page{% endblock %}
+{% block content %}
+  {% for data in range %}
+    <ul>
+         <li>
+           <a href="{{ url_for('db_commands.anime_info', anime_id=anime_list[data].name) }}">
+               <h3> anime_list[data].name</h3>
+             <img align="center" src="{{ images[data] }}" alt="{{ anime_list[data].name }}" width="300" height="350">
+            </a>
+         </li>
+    </ul>
+  {% endfor %}
+{% endblock %}
