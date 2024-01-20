@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Anime Details - My Anime App{% endblock %}
+
+{% block header %}Anime Details{% endblock %}
+
+{% block content %}
+    <h1>{{ name_anime }}</h1>
+    <img src="{{ pics_anime }}" alt="{{ name_anime }}" width="300" height="350">
+    <h3>Synopsis:</h3>
+    {{ summary }}
+    <h3>Genre(s):</h3>
+<ul>
+    {% for g in genre %}
+    <li>
+        {{ g }}
+    </li>
+    {% endfor %}
+</ul>
+    <h3>Rating:</h3>{{ score }}
+    <h3>Maturity Rating:</h3> {{ rating }}
+    <h3>Anime Type:</h3> {{ type_anime }}
+    <h3>Episodes:</h3> {{ episodes }}
+    <h3>Time of Airing:</h3> {{ aired }}
+    <h3>Duration:</h3> {{ duration }}
+    <h3>Studio:</h3> {{ studio }}
+
+
+{% endblock %}
+
+<!--score=score, rating=rating, type_anime=type_anime,-->
+<!--                           episodes=episodes, aired=aired, duration=duration,-->
+<!--                           studio=studio-->

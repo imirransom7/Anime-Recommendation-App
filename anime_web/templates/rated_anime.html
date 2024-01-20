@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Anime Page{% endblock %}
+{% block content %}
+  {% for data in range %}
+    <ul>
+         <li>
+             <h3> Rating: {{ rated_anime[data].score }}</h3>
+             <img align="center" src="{{ images[data] }}" alt="{{ data.name }}" width="300" height="350">
+         </li>
+    </ul>
+  {% endfor %}
+{% endblock %}
