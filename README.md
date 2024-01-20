@@ -1,4 +1,5 @@
-# Anime Recommendation App
+# RecAnime
+An anime recommendation application
 
 ## About
 
@@ -18,7 +19,7 @@ and anything in your favorites, other anime will be recommended to you based on 
 
 -User profile to save your favorites and save later options
 
--The tools I will use are Python, Pandas, JHipster, HTML, CSS, and MySQL
+-The technologies I will be using are Python, Pandas, Flask, Tableau, HTML, CSS, SQLite, Spark
 
 
 ## Datasets
