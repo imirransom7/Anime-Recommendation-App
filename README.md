@@ -1,12 +1,15 @@
-# Anime Recommendation App
+# RecAnime
+An anime recommendation application
 
 ## About
 
-This application will be used to recommend anime to not just traditional and new anime watchers, but to those who have yet to get into it. The app will select
+This application will be used to recommend anime to not just traditional, but to those who have yet to get into it. The app will select
 anime you should watch depending on anime you may have watched previously, as well as anime you plan on watching.
 If you haven't wathced any anime, you can select genres you are interested in and a recommendation will be made on that. It can aslo make a recommendation
-movies and shows you have watched or liked that are not anime based on that movie or shows genre. You will be able to add anime to your favorites
-and anything in your favorites, other anime will be recommended to you based on those anime's genre.
+movies and shows you have watched or liked that are not anime based on that movie or show's genre. You will be able to add anime to your favorites.
+Depending on the anime in your favorites, other anime will be recommended to you based on those anime's genre. The application will also show the
+visual analytical data for most popular anime, top rated anime, etc.
+
 
 -Recommendation on whether you wamt to watch movies, short anime, and or longer anime
 
@@ -18,14 +21,22 @@ and anything in your favorites, other anime will be recommended to you based on 
 
 -User profile to save your favorites and save later options
 
--The tools I will use are Python, Pandas, JHipster, HTML, CSS, and MySQL
+-The technologies I will be using are:
+  - Python
+  - Pandas
+  - Flask
+  - Tableau
+  - HTML
+  - CSS
+  - SQLite
+  - Spark
 
 
 ## Datasets
 
-The dataset I will be using to help with my analysis is from kaggle, **Anime Dataset 2023**.
+The dataset I will be using to help with my analysis is from kaggle: *Anime Dataset 2023*: https://www.kaggle.com/datasets/dbdmobile/myanimelist-dataset/data , **Anime Dataset 2023**.
 I will use the csv files `anime-dataset-2023.csv` and `user-details-2023.csv` to look
-at analytical data for anime trends and see who is mainly interested in what
+at analytical data for anime trends and see who is mainly interested in what.
 
 ### Content
 
