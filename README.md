@@ -10,6 +10,17 @@ movies and shows you have watched or liked that are not anime based on that movi
 Depending on the anime in your favorites, other anime will be recommended to you based on those anime's genre. The application will also show the
 visual analytical data for most popular anime, top rated anime, etc.
 
+
+-Recommendation on whether you wamt to watch movies, short anime, and or longer anime
+
+-Will show the viusal analytical data for most popular anime
+
+-Will have visual analytics on the top rated anime
+
+-Favorites list and Save later list
+
+-User profile to save your favorites and save later options
+
 -The technologies I will be using are:
   - Python
   - Pandas
