@@ -1,42 +1,35 @@
 {% extends 'base.html' %}
 {% block title %}Popular Page{% endblock %}
 {% block content %}
+<div align="center">
+    <h1 class="Display-1 font-weight-bolder">Most Popular Anime</h1>
+    <h3 class="Display-3 font-weight-bolder">Top 5</h3>
+</div>
+
 
 <div class="container">
-    <div class="row">
+<div class="row">
+        <h5>One Piece</h5>
+        <img src="{{url_for('static', filename="images/one_piece-1.jpeg")}}",
+        width="300", height="350">
 
+        <h5>Shingeki no Kyojin: The Final Season</h5>
+        <img src="{{url_for('static', filename="images/AOT.jpg")}}",
+        width="300", height="350">
+
+        <h5>Jujutsu Kaisen (TV)</h5>
+        <img src="{{url_for('static', filename="images/Juju.jpeg")}}",
+        width="300", height="350">
+
+        <h5>Black Clover</h5>
+        <img src="{{url_for('static', filename="images/black_clover_1.jpeg")}}",
+        width="300", height="350">
     </div>
-    <h1>Most Popular Anime</h1>
-    <h3>Top 5</h3>
-    <ol>
-        <li>
-            <h5>One Piece</h5>
-            <img src="{{url_for('static', filename="images/one_piece-1.jpeg")}}",
-            width="300", height="350">
-        </li>
-        <li>
-            <h5>Shingeki no Kyojin: The Final Season</h5>
-            <img src="{{url_for('static', filename="images/AOT.jpg")}}",
-            width="300", height="350">
-        </li>
-        <li>
-            <h5>Jujutsu Kaisen (TV)</h5>
-            <img src="{{url_for('static', filename="images/Juju.jpeg")}}",
-            width="300", height="350">
-        </li>
-        <li>
-            <h5>Black Clover</h5>
-            <img src="{{url_for('static', filename="images/black_clover_1.jpeg")}}",
-            width="300", height="350">
-        </li>
-        <li>
+        <div align="center">
             <h5>Naruto: Shippuden</h5>
             <img src="{{url_for('static', filename="images/naruto_shippuden_1.jpg")}}",
             width="300", height="350">
-        </li>
-
-    </ol>
-
+        </div>
     <br>
     <br>
     <br>
