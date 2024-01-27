@@ -1,42 +1,40 @@
 {% extends 'base.html' %}
 {% block title %}Popular Page{% endblock %}
 {% block content %}
+<div align="center">
+    <h1 class="Display-1 font-weight-bolder">Most Popular Anime</h1>
+    <h3 class="Display-3 font-weight-bolder">Top 5</h3>
+</div>
 
-<div class="container">
+<div align="center">
     <div class="row">
-
-    </div>
-    <h1>Most Popular Anime</h1>
-    <h3>Top 5</h3>
-    <ol>
-        <li>
-            <h5>One Piece</h5>
+        <div class="col-sm-6">
+            <h3 class="font-weight-bolder">One Piece</h3>
             <img src="{{url_for('static', filename="images/one_piece-1.jpeg")}}",
             width="300", height="350">
-        </li>
-        <li>
-            <h5>Shingeki no Kyojin: The Final Season</h5>
+        </div>
+        <div class="col-sm-6">
+            <h3 class="font-weight-bolder">Shingeki no Kyojin: The Final Season</h3>
             <img src="{{url_for('static', filename="images/AOT.jpg")}}",
             width="300", height="350">
-        </li>
-        <li>
-            <h5>Jujutsu Kaisen (TV)</h5>
+        </div>
+        <div class="col-sm-6">
+            <h3 class="font-weight-bolder">Jujutsu Kaisen (TV)</h3>
             <img src="{{url_for('static', filename="images/Juju.jpeg")}}",
             width="300", height="350">
-        </li>
-        <li>
-            <h5>Black Clover</h5>
+        </div>
+        <div class="col-sm-6">
+            <h3 class="font-weight-bolder">Black Clover</h3>
             <img src="{{url_for('static', filename="images/black_clover_1.jpeg")}}",
             width="300", height="350">
-        </li>
-        <li>
-            <h5>Naruto: Shippuden</h5>
+        </div>
+        <div class="col-sm-6">
+            <h3 class="font-weight-bolder">Naruto: Shippuden</h3>
             <img src="{{url_for('static', filename="images/naruto_shippuden_1.jpg")}}",
             width="300", height="350">
-        </li>
-
-    </ol>
-
+        </div>
+    </div>
+</div>
     <br>
     <br>
     <br>
@@ -44,16 +42,18 @@
     <br>
     <br>
 
-    <h1 class="Display-1 font-weight-bolder">Interactive Tableau Boards</h1>
 <!--    <h1>Top 50 Graph</h1>-->
 <!--    <br>-->
 <!--    <br>-->
 <!--    <img src="{{url_for('static', filename="images/most_watched_anime.png")}}-->
 <!--    ",  width="700" ,height="700">-->
+<div align="center">
+    <h1 class="Display-1 font-weight-bolder">Interactive Tableau Boards</h1>
     <h3>
         The Rating and Source sheet of this dashboard shows how many watchers there are per the audience rating.
         Each rating also has the source of the anime with the watch numbers as well
     </h3>
+
 <!--    Code for the dashboard-->
     <div class='tableauPlaceholder' id='viz1705767340225' style='position: relative'><noscript><a href='#'>
         <img alt='Most Watch by Rating, Source, and Episodes ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;
@@ -85,7 +85,7 @@
          name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count'
          value='yes' /><param name='language' value='en-US' /></object></div><script type='text/javascript'>
          var divElement = document.getElementById('viz1705779305548'); var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </div>
 </div>
-
 
 {% endblock %}
