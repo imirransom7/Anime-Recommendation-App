@@ -92,8 +92,12 @@
         {% endwith %}
 
 <!--        <h1>RecAnime!!!</h1>-->
+    <div class="container">
+   <div class="col-md-12">
         {% block content %}
         {% endblock %}
+   </div>
+    </div>
         {% for x in content %}
             <p>{{x}}</p>
         {% endfor %}
