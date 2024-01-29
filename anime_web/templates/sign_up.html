@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% block title %}Sign Up Page{% endblock %}
+
+{% block bg %}
+
+background="/static/images/signup_img.png" class="child_bg_class"
+
+{% endblock %}
+
 {% block content %}
+
 
 <form method="POST">
     <div align="center">
@@ -50,4 +58,16 @@
     <br />
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+{% endblock %}
+
+
+{% block styles %}
+<style>
+  body {
+    /* Set background image */
+    background-image: url("{{ url_for('static', filename='images/signup_img.png') }}");
+    /* Set background size to cover the entire page */
+    background-size: cover;
+  }
+</style>
 {% endblock %}
