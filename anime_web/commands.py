@@ -93,3 +93,8 @@ def anime_info(anime_id):
 @db_commands.route('/anime-most-popular')
 def most_popular():
     return render_template('most_popular.html')
+
+
+@db_commands.route('/analytics')
+def analytics():
+    return render_template('analytics_page.html')
