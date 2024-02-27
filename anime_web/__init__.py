@@ -1,3 +1,4 @@
+from config import *
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path
@@ -12,7 +13,7 @@ DB_NAME = 'database.db'
 def create_app():
     app = Flask(__name__)
     # Secure the cookies session data; the secret key for the app
-    app.config["SECRET_KEY"] = 'THIS IS THE SECRET KEY'
+    app.config["SECRET_KEY"] = secret_key
     # Storing the database inside the anime_web folder
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
