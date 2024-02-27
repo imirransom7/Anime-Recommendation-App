@@ -6,7 +6,6 @@ from flask_login import LoginManager
 # Import the function from models
 
 db = SQLAlchemy()
-DB_NAME = 'database.db'
 
 
 # How to initialize Flask
@@ -15,10 +14,11 @@ def create_app():
     # Secure the cookies session data; the secret key for the app
     app.config["SECRET_KEY"] = secret_key
     # Storing the database inside the anime_web folder
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = mysql_path
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     #  taking the database and telling it this the app we are going to use
     db.init_app(app)
+
     # importing the blueprints
     from .views import views
     from .auth import auth
