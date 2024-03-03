@@ -28,8 +28,8 @@ visual analytical data for most popular anime, top rated anime, etc.
   - Tableau
   - HTML
   - CSS
-  - SQLite
-  - Spark
+  - MySQL
+  - Apache Spark
 
 
 ## Datasets
