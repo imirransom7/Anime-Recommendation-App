@@ -26,6 +26,12 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(150))
 
 
+class AnimeDataset(db.Model):
+    anime_id = db.Column(db.Integer, primary_key=True)
+    name = db.Cloumn(db.Strings(30))
+
+
+
 class AnimeImages(db.Model):
     anime_id = db.Column(db.Integer, db.ForeignKey('anime_id'), nullable=False)
     images = db.Column(db.Text)
