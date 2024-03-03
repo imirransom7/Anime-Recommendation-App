@@ -28,8 +28,26 @@ class User(db.Model, UserMixin):
 
 class AnimeDataset(db.Model):
     anime_id = db.Column(db.Integer, primary_key=True)
-    name = db.Cloumn(db.Strings(30))
-
+    name = db.Column(db.Strings(70))
+    score = db.Column(db.Float)
+    type = db.Column(db.Strings(20))
+    # The columns where the anime is not finished show up as 'UNKNOWN'; might have to change to something else
+    episodes = db.Column(db.Integer)
+    aired = db.Strings(30)
+    premiered = db.Strings(30)
+    status = db.Strings(30)
+    producers = db.Strings(100)
+    licensors = db.Stringd(100)
+    studios = db.Strings(100)
+    source = db.Strings(20)
+    duration = db.Strings(30)
+    rating = db.Strings(40)
+    rank = db.Integer()
+    popularity = db.Integer()
+    favorites = db.Integer()
+    scored_by = db.Integer()
+    members = db.Integer()
+    images_url = db.Text()
 
 
 class AnimeImages(db.Model):
