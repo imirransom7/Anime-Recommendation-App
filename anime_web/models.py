@@ -27,6 +27,9 @@ class User(db.Model, UserMixin):
 
 
 class AnimeGenres(db.Model):
+    anime_id = db.Column(db.Integer, foreign_key=True)
+    name = db.Column(db.Text)
+    genre = db.Column(db.Text)
 
 
 # class AnimeFiltered(db.Model):
