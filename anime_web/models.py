@@ -63,6 +63,11 @@ class AnimeGenres(db.Model):
     genre = db.relationship('AnimeDataset', backref='anime')
 
 
+class UserDetails(db.model):
+    # id for the users from the anime dataset (not the anime dataset mmodel)
+    mal_id = db.Column(db.Integer, primary_key=True)
+
+
 # class AnimeFiltered(db.Model):
 #     anime_id = db.Column(db.Integer, primary_key=True)
 #     name = db.Column(db.String(50))
