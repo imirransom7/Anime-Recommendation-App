@@ -26,6 +26,48 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(150))
 
 
+class AnimeDataset(db.Model):
+    anime_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Strings(70))
+    score = db.Column(db.Float)
+    type = db.Column(db.Strings(20))
+    # The columns where the anime is not finished show up as 'UNKNOWN'; might have to change to something else
+    episodes = db.Column(db.Integer)
+    aired = db.Column(db.Strings(30))
+    premiered = db.Column(db.Strings(20))
+    status = db.Column(db.Strings(20))
+    producers = db.Column(db.Strings(100))
+    licensors = db.Column(db.Strings(100))
+    studios = db.Column(db.Strings(100))
+    source = db.Column(db.Strings(20))
+    duration = db.Column(db.Strings(30))
+    rating = db.Column(db.Strings(40))
+    rank = db.Column(db.Integer)
+    popularity = db.Column(db.Integer)
+    favorites = db.Column(db.Integer)
+    scored_by = db.Column(db.Integer)
+    members = db.Column(db.Integer)
+    images_url = db.Column(db.Text)
+
+
+class AnimeImages(db.Model):
+    anime_id = db.Column(db.Integer, db.ForeignKey('anime_id'), nullable=False)
+    images = db.Column(db.Text)
+
+
+class AnimeGenres(db.Model):
+    anime_id = db.Column(db.Integer, db.ForeignKey('anime_id'), nullable=False)
+    name = db.Column(db.String(35))
+
+    # This needs to go to the AnimeDataset Model when it is made
+    genre = db.relationship('AnimeDataset', backref='anime')
+
+
+class UserDetails(db.model):
+    # id for the users from the anime dataset (not the anime dataset mmodel)
+    mal_id = db.Column(db.Integer, primary_key=True)
+
+
 # class AnimeFiltered(db.Model):
 #     anime_id = db.Column(db.Integer, primary_key=True)
 #     name = db.Column(db.String(50))
