@@ -66,6 +66,9 @@ class AnimeGenres(db.Model):
 class UserDetails(db.model):
     # id for the users from the anime dataset (not the anime dataset mmodel)
     mal_id = db.Column(db.Integer, primary_key=True)
+    username = db.Columns(db.Strings(100))
+    gender = db.Columns(db.Strings(20))
+    birthday = db.Columns(db.)
 
 
 # class AnimeFiltered(db.Model):
