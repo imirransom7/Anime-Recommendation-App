@@ -68,7 +68,21 @@ class UserDetails(db.model):
     mal_id = db.Column(db.Integer, primary_key=True)
     username = db.Columns(db.Strings(100))
     gender = db.Columns(db.Strings(20))
-    birthday = db.Columns(db.)
+    birthday = db.Columns(db.Date)
+    location = db.Columns(db.Text)
+    joined = db.Column(db.Text)
+    days_watched = db.Columns(db.Integer)
+    mean_score = db.Columns(db.Float)
+    watching = db.Columnd(db.Integer)
+    completed = db.Columns(db.Integer)
+    on_hold = db.Columns(db.Integer)
+    dropped = db.Columns(db.Integer)
+    plan_to_watch = db.Columns(db.Integer)
+    total_entries = db.Columns(db.Integer)
+    rewatched = db.Columns(db.Integer)
+    episodes_watched = db.Columns(db.Integer)
+    age = db.Columns(db.Integer)
+
 
 
 # class AnimeFiltered(db.Model):
