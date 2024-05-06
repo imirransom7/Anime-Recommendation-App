@@ -28,26 +28,28 @@ class User(db.Model, UserMixin):
 
 class AnimeDataset(db.Model):
     anime_id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Strings(70))
+    name = db.Column(db.String(70))
     score = db.Column(db.Float)
-    type = db.Column(db.Strings(20))
+    type = db.Column(db.String(20))
     # The columns where the anime is not finished show up as 'UNKNOWN'; might have to change to something else
     episodes = db.Column(db.Integer)
-    aired = db.Column(db.Strings(30))
-    premiered = db.Column(db.Strings(20))
-    status = db.Column(db.Strings(20))
-    producers = db.Column(db.Strings(100))
-    licensors = db.Column(db.Strings(100))
-    studios = db.Column(db.Strings(100))
-    source = db.Column(db.Strings(20))
-    duration = db.Column(db.Strings(30))
-    rating = db.Column(db.Strings(40))
+    aired = db.Column(db.String(30))
+    premiered = db.Column(db.String(20))
+    status = db.Column(db.String(20))
+    producers = db.Column(db.String(100))
+    licensors = db.Column(db.String(100))
+    studios = db.Column(db.String(100))
+    source = db.Column(db.String(20))
+    duration = db.Column(db.String(30))
+    rating = db.Column(db.String(40))
     rank = db.Column(db.Integer)
     popularity = db.Column(db.Integer)
     favorites = db.Column(db.Integer)
     scored_by = db.Column(db.Integer)
     members = db.Column(db.Integer)
     images_url = db.Column(db.Text)
+    genre = db.relationship('AnimeDataset', backref='anime_dataset')
+    images = db.relationship('AnimeDataset', backref='anime_dataset')
 
 
 class AnimeImages(db.Model):
@@ -56,32 +58,32 @@ class AnimeImages(db.Model):
 
 
 class AnimeGenres(db.Model):
-    anime_id = db.Column(db.Integer, db.ForeignKey('anime_id'), nullable=False)
+    anime_id = db.Column(db.Integer, db.ForeignKey('anime_dataset.anime_id'), nullable=False)
     name = db.Column(db.String(35))
 
     # This needs to go to the AnimeDataset Model when it is made
-    genre = db.relationship('AnimeDataset', backref='anime')
+    # genre = db.relationship('AnimeDataset', backref='anime')
 
 
 class UserDetails(db.model):
     # id for the users from the anime dataset (not the anime dataset mmodel)
     mal_id = db.Column(db.Integer, primary_key=True)
-    username = db.Columns(db.Strings(100))
-    gender = db.Columns(db.Strings(20))
-    birthday = db.Columns(db.Date)
-    location = db.Columns(db.Text)
+    username = db.Column(db.Strings(100))
+    gender = db.Column(db.Strings(20))
+    birthday = db.Column(db.Date)
+    location = db.Column(db.Text)
     joined = db.Column(db.Text)
-    days_watched = db.Columns(db.Integer)
-    mean_score = db.Columns(db.Float)
-    watching = db.Columnd(db.Integer)
-    completed = db.Columns(db.Integer)
-    on_hold = db.Columns(db.Integer)
-    dropped = db.Columns(db.Integer)
-    plan_to_watch = db.Columns(db.Integer)
-    total_entries = db.Columns(db.Integer)
-    rewatched = db.Columns(db.Integer)
-    episodes_watched = db.Columns(db.Integer)
-    age = db.Columns(db.Integer)
+    days_watched = db.Column(db.Integer)
+    mean_score = db.Column(db.Float)
+    watching = db.Column(db.Integer)
+    completed = db.Column(db.Integer)
+    on_hold = db.Column(db.Integer)
+    dropped = db.Column(db.Integer)
+    plan_to_watch = db.Column(db.Integer)
+    total_entries = db.Column(db.Integer)
+    rewatched = db.Column(db.Integer)
+    episodes_watched = db.Column(db.Integer)
+    age = db.Column(db.Integer)
 
 
 
